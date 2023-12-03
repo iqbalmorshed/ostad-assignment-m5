@@ -1,0 +1,22 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.formatOnPaste": true,
+	"editor.formatOnType": true,
+	"prettier.arrowParens": "avoid",
+	"prettier.tabWidth": 4,
+	"prettier.trailingComma": "all",
+	"prettier.singleQuote": true,
+	"prettier.bracketSpacing": false,
+	"prettier.semi": true,
+	"editor.detectIndentation": false,
+	"prettier.bracketSameLine": true,
+	"[javascript]": {
+		// "editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[typescript]": {
+		// "editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+}
