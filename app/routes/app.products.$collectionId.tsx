@@ -1,6 +1,6 @@
 /* show list of products in a collection */
 import { type LoaderFunctionArgs, json, type ActionFunctionArgs } from "@remix-run/node";
-import { useLoaderData, useSubmit } from "@remix-run/react";
+import { useLoaderData, useParams, useSubmit } from "@remix-run/react";
 import { Page, Layout, Text, Card, BlockStack, FormLayout, TextField } from "@shopify/polaris";
 import { useState } from "react";
 import PopUpModal from "~/components/PopUpModal";
@@ -27,11 +27,11 @@ type LoaderData = {
 }
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
-	invariant(params.id, "Could not find collection");
+	const collectionId = params.collectionId;
+	invariant(collectionId, "Could not find collection");
 	const { session } = await authenticate.admin(request);
 	const { shop } = session;
 	//get collection id from url
-	const collectionId = params.id;
 
 	const collection = await getCollection(collectionId);
 	invariant(collection, "Could not find collection");
@@ -179,4 +179,21 @@ const ProductPopUpModal = ({ product, collectionId, setShowModal }: ProductPopUp
 		</PopUpModal>
 	);
 };
+
+export function ErrorBoundary() {
+	const { collectionId } = useParams();
+	return (
+		<Page>
+			<Layout>
+				<Card>
+					<Text as="p" tone="critical">
+						<div className="error-container">
+							Something went wrong while loading the products for collection with Id: {collectionId}
+						</div>
+					</Text>
+				</Card>
+			</Layout>
+		</Page>
+	);
+}
 
