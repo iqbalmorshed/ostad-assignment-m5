@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "ostad-assignment-m5"
+client_id = "577f51a37cbef62a2efb5fd4e7ea8b47"
+application_url = "https://reward-involved-om-fleet.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://reward-involved-om-fleet.trycloudflare.com/auth/callback",
+  "https://reward-involved-om-fleet.trycloudflare.com/auth/shopify/callback",
+  "https://reward-involved-om-fleet.trycloudflare.com/api/auth/callback",
+  "https://reward-involved-om-fleet.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "ostadstore99.myshopify.com"
