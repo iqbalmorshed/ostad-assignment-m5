@@ -1,6 +1,6 @@
 import { type LoaderFunctionArgs, json, type ActionFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useNavigate, useSubmit } from "@remix-run/react";
-import { Page, Layout, Text, Card, BlockStack, FormLayout, TextField } from "@shopify/polaris";
+import { Page, Layout, Text, Card, BlockStack, FormLayout, TextField, Button } from "@shopify/polaris";
 import { useState } from "react";
 import PopUpModal from "~/components/PopUpModal";
 import { createCollection, getShopCollections, updateCollection } from "~/models/Collection.server";
@@ -70,11 +70,11 @@ export default function Collections() {
 							<CollectionsTable collections={collections} />
 						</BlockStack>
 					</Card>
-					<button
+					<Button
 						onClick={() => {
 							setShowModal(true);
 						}}
-					>Create new collection</button>
+					>Create new collection</Button>
 					{showModal && <CollectionPopUpModal collection={null} setShowModal={setShowModal} />}
 				</Layout.Section>
 			</Layout>
@@ -106,19 +106,19 @@ const CollectionsTable = ({ collections }: { collections: Collection[] }) => {
 							<td>{collection.name}</td>
 							<td>{collection.description}</td>
 							<td>
-								<button
+								<Button
 									onClick={() => {
 										setSelectedCollection(collection);
 										setShowModal(true);
 									}}
-								>Edit</button>
+								>Edit</Button>
 							</td>
 							<td>
-								<button
+								<Button
 									onClick={() => {
 										navigate(`/app/products/${collection.id}`);
 									}}
-								>Show Products</button>
+								>Show Products</Button>
 							</td>
 						</tr>
 					))}
@@ -142,6 +142,7 @@ const CollectionPopUpModal = ({ collection, setShowModal }: CollectionPopUpModal
 
 	return (
 		<PopUpModal
+			title={id ? "Edit Collection" : "Create Collection"}
 			setShowModal={setShowModal}
 			onPrimaryAction={() => {
 				submit({

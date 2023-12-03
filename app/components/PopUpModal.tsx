@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Modal, Button } from '@shopify/polaris';
 
 interface PopUpModalProps {
+	title?: string;
 	children: React.ReactNode;
 	setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 	onPrimaryAction: () => void;
 }
 
-const PopUpModal: React.FC<PopUpModalProps> = ({ children, onPrimaryAction, setShowModal }) => {
+const PopUpModal: React.FC<PopUpModalProps> = ({ title, children, onPrimaryAction, setShowModal }) => {
 
 	const handlePrimaryAction = () => {
 		onPrimaryAction();
@@ -20,7 +21,7 @@ const PopUpModal: React.FC<PopUpModalProps> = ({ children, onPrimaryAction, setS
 			<Modal
 				open={true}
 				onClose={() => setShowModal(false)}
-				title="My PopUp Modal"
+				title={title || ""}
 				primaryAction={{
 					content: 'Save',
 					onAction: handlePrimaryAction,

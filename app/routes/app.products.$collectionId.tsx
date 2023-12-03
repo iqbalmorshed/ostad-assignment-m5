@@ -1,7 +1,7 @@
 /* show list of products in a collection */
 import { type LoaderFunctionArgs, json, type ActionFunctionArgs } from "@remix-run/node";
 import { useLoaderData, useParams, useSubmit } from "@remix-run/react";
-import { Page, Layout, Text, Card, BlockStack, FormLayout, TextField } from "@shopify/polaris";
+import { Page, Layout, Text, Card, BlockStack, FormLayout, TextField, Button } from "@shopify/polaris";
 import { useState } from "react";
 import PopUpModal from "~/components/PopUpModal";
 import { getCollection } from "~/models/Collection.server";
@@ -87,11 +87,11 @@ export default function Products() {
 							<ProductsTable products={products} />
 						</BlockStack>
 					</Card>
-					<button
+					<Button
 						onClick={() => {
 							setShowModal(true);
 						}}
-					>Create new product</button>
+					>Create new product</Button>
 					{showModal && <ProductPopUpModal product={null} collectionId={collection.id} setShowModal={setShowModal} />}
 				</Layout.Section>
 			</Layout>
@@ -119,12 +119,12 @@ const ProductsTable = ({ products }: { products: Product[] }) => {
 							<td>{product.name}</td>
 							<td>{product.description}</td>
 							<td>
-								<button
+								<Button
 									onClick={() => {
 										setSelectedProduct(product);
 										setShowModal(true);
 									}}
-								>Edit</button>
+								>Edit</Button>
 								{showModal &&
 									<ProductPopUpModal
 										product={selectedProduct}
@@ -151,13 +151,16 @@ const ProductPopUpModal = ({ product, collectionId, setShowModal }: ProductPopUp
 	const [description, setDescription] = useState(product?.description ?? "");
 
 	return (
-		<PopUpModal setShowModal={setShowModal} onPrimaryAction={() => {
-			submit({
-				id,
-				name,
-				description,
-				collectionId,
-			}, { replace: true, method: "POST" });
+		<PopUpModal
+			title={id ? "Edit product" : "Create new product"}
+			setShowModal={setShowModal}
+			onPrimaryAction={() => {
+				submit({
+					id,
+					name,
+					description,
+					collectionId,
+				}, { replace: true, method: "POST" });
 
 		}}>
 			<FormLayout>
