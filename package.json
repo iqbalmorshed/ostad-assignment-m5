@@ -33,7 +33,8 @@
     "isbot": "latest",
     "prisma": "^4.13.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tiny-invariant": "^1.3.1"
   },
   "devDependencies": {
     "@remix-run/eslint-config": "^2.0.0",
@@ -45,6 +46,7 @@
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8",
+    "tsx": "^4.6.2",
     "typescript": "^5.2.2"
   },
   "workspaces": [
@@ -53,5 +55,8 @@
   "trustedDependencies": [
     "@shopify/plugin-cloudflare"
   ],
-  "author": "iqbalmorshed"
+  "author": "iqbalmorshed",
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
+  }
 }
