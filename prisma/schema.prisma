@@ -20,3 +20,19 @@ model Session {
   accessToken String
   userId      BigInt?
 }
+
+model Collection {
+  id          String    @id @default(uuid())
+  shop        String
+  name       String
+  description String?
+  products    Product[]
+}
+
+model Product {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId String
+}
