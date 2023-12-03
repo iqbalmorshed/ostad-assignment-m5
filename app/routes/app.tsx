@@ -15,20 +15,21 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function App() {
-  const { apiKey } = useLoaderData<typeof loader>();
+	const { apiKey } = useLoaderData<typeof loader>();
 
-  return (
-    <AppProvider isEmbeddedApp apiKey={apiKey}>
-      <ui-nav-menu>
-        <Link to="/app" rel="home">
-          Home
-        </Link>
-        <Link to="/app/additional">Additional page</Link>
-		<Link to="/app/shop">Shop</Link>
-      </ui-nav-menu>
-      <Outlet />
-    </AppProvider>
-  );
+	return (
+		<AppProvider isEmbeddedApp apiKey={apiKey}>
+			<ui-nav-menu>
+				<Link to="/app/shop" rel="home">
+					Home
+				</Link>
+				{/* <Link to="/app/additional">Additional page</Link> */}
+				<Link to="/app/shop">Shop</Link>
+				<Link to="/app/collections">Collections</Link>
+			</ui-nav-menu>
+			<Outlet />
+		</AppProvider>
+	);
 }
 
 // Shopify needs Remix to catch some thrown responses, so that their headers are included in the response.
