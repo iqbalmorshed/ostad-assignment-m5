@@ -2,7 +2,7 @@
 
 name = "ostad-assignment-m5"
 client_id = "577f51a37cbef62a2efb5fd4e7ea8b47"
-application_url = "https://reward-involved-om-fleet.trycloudflare.com"
+application_url = "https://cds-watch-use-bool.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://reward-involved-om-fleet.trycloudflare.com/auth/callback",
-  "https://reward-involved-om-fleet.trycloudflare.com/auth/shopify/callback",
-  "https://reward-involved-om-fleet.trycloudflare.com/api/auth/callback",
-  "https://reward-involved-om-fleet.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://cds-watch-use-bool.trycloudflare.com/auth/callback",
+  "https://cds-watch-use-bool.trycloudflare.com/auth/shopify/callback",
+  "https://cds-watch-use-bool.trycloudflare.com/api/auth/callback",
+  "https://cds-watch-use-bool.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
