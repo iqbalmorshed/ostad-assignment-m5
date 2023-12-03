@@ -63,9 +63,6 @@ export default function Collections() {
 								<Text as="h2" variant="headingMd">
 									Collections
 								</Text>
-								<Text variant="bodyMd" as="p">
-									List of collections
-								</Text>
 							</BlockStack>
 							<CollectionsTable collections={collections} />
 						</BlockStack>
@@ -89,15 +86,19 @@ const CollectionsTable = ({ collections }: { collections: Collection[] }) => {
 	const navigate = useNavigate();
 
 	if (!collections.length)
-		return <div>No collections found</div>;
+		return (
+			<Text as="p" tone="critical">
+				There is no collection in this shop. Create one!
+			</Text>
+		);
 
 	return (
 		<>
 			<table>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Description</th>
+						<th><Text as="h5" variant="headingMd" alignment="start">Name</Text></th>
+						<th><Text as="h5" variant="headingMd" alignment="start">Description</Text></th>
 					</tr>
 				</thead>
 				<tbody>

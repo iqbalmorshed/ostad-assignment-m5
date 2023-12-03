@@ -104,12 +104,20 @@ const ProductsTable = ({ products }: { products: Product[] }) => {
 	const [showModal, setShowModal] = useState(false);
 	const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+	if (products.length == 0) {
+		return (
+			<Text as="p" tone="critical">
+				There are no products in this collection
+			</Text>
+		);
+	}
+
 	return (
 		<table>
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Description</th>
+					<th><Text as="h5" variant="headingMd" alignment="start">Name</Text></th>
+					<th><Text as="h5" variant="headingMd" alignment="start">Description</Text></th>
 				</tr>
 			</thead>
 			<tbody>
